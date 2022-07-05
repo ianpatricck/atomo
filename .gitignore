@@ -2,3 +2,4 @@ tasks.md
 atomo-venv
 build/
 __pycache__
+.env
