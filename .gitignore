@@ -3,3 +3,4 @@ atomo-venv
 build/
 __pycache__
 .env
+core/database/run.py
