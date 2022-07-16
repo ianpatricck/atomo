@@ -1,4 +1,3 @@
-
 class ListController:
     
     def __init__(self, mongoProvider):
@@ -8,10 +7,16 @@ class ListController:
         
         try:
            
-            results = []
- 
-            for item in self.mongoProvider["branches"].find({}, { "_id": 0, "tag": 0 }):
-                results.append(item)
+            results = {}
+
+            for discipline in self.mongoProvider["disciplines"].find({}, { "_id": 0, "tag": 0 }):
+                if not discipline["name"] in results:
+                    results[discipline["name"]] = []
+            
+            for branch in self.mongoProvider["branches"].find({}, { "_id": 0, "tag": 0 }):
+                for discipline in self.mongoProvider["disciplines"].find({}, { "_id": 0 }):
+                    if (discipline["tag"] == branch["discipline_tag"]):
+                        results[discipline["name"]].append(branch["name"])
 
             return {
                 "status": True,
