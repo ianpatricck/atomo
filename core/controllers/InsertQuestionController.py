@@ -23,10 +23,10 @@ class InsertQuestionController:
                     "data": "Algo deu errado"
                 }
 
-        questionsCol = self.mongoProvider["questions"]
+        questionsCol = self.mongoProvider["reviews"]
         questionsCol.insert_one(questionSentData)
 
         return {
             "status": True,
-            "data": "Questão enviada com sucesso"
+            "data": "Parabéns!! seu exercício foi enviado para análise"
         } 
