@@ -1,5 +1,6 @@
 import json
 import discord
+import os
 
 from dotenv import dotenv_values
 
@@ -51,5 +52,6 @@ async def on_message(message):
 
             await discordProvider.request(message, messageList, generatePdfController)
 
-client.run(config["DISCORD_TOKEN"])
+DISCORD_TOKEN = config["DISCORD_TOKEN"] or os.environ.get("DISCORD_TOKEN")
+client.run(DISCORD_TOKEN)
 
