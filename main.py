@@ -52,6 +52,6 @@ async def on_message(message):
 
             await discordProvider.request(message, messageList, generatePdfController)
 
-DISCORD_TOKEN = config["DISCORD_TOKEN"] or os.environ.get("DISCORD_TOKEN")
+DISCORD_TOKEN = config["DISCORD_TOKEN"] or os.getenv("DISCORD_TOKEN")
 client.run(DISCORD_TOKEN)
 
